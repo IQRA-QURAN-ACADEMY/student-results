@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Results</h1>
+        <div class="form-group">
+            <label for="rollNumber">Roll Number:</label>
+            <input type="text" id="rollNumber" placeholder="Enter Roll Number">
+        </div>
+        <button onclick="displayResult()">Check Result</button>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Sample student data
+        const students = {
+            "101": { name: "HUSSAIN", grade: "A+", marks: 38 },
+            "102": { name: "THOUFEEQ", grade: "A", marks: 34 },
+            "103": { name: "ARSHAD", grade: "A", marks: 33 },
+            "104": { name: "RIYAZ", grade: "A", marks: 32 },
+	    "105": { name: "AZAAM", grade: "A", marks: 33 },
+            "106": { name: "THAISEEN", grade: "A", marks: 33 },
+            "107": { name: "TANWEEN", grade: "A+", marks: 35 },
+            "108": { name: "MOHAMMED", grade: "D", marks: 16 },
+          "109": { name: "SUMER", grade: "B", marks: 29 },
+            "110": { name: "HUZAIR", grade: "A", marks: 33 },
+
+
+            // Add more students as needed
+        };
+
+        // Function to display the result
+        function displayResult() {
+            const rollNumber = document.getElementById('rollNumber').value;
+            const resultDiv = document.getElementById('result');
+
+            if (students[rollNumber]) {
+                const student = students[rollNumber];
+                resultDiv.style.display = "block";
+                resultDiv.innerHTML = `
+                    <h3>IQRA QURAN ACADEMY TEST RESULTS</h3>
+                    <p><strong>Name:</strong> ${student.name}</p>
+                    <p><strong>Grade:</strong> ${student.grade}</p>
+                    <p><strong>Marks:</strong> ${student.marks}</p>
+                `;
+            } else {
+                resultDiv.style.display = "block";
+                resultDiv.innerHTML = `
+                    <h3>No Result Found</h3>
+                    <p>Roll number <strong>${rollNumber}</strong> does not exist in the system.</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
